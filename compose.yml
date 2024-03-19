@@ -1,0 +1,30 @@
+services:
+  proxy:
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./proxy/default.conf.template:/etc/nginx/templates/default.conf.template
+    ports:
+      - "80:80"
+
+  hw1:
+    image: httpd:latest
+    restart: unless-stopped
+    volumes:
+      - ./Homework1:/usr/local/apache2/htdocs
+
+  hw2:
+    image: httpd:latest
+    restart: unless-stopped
+    volumes:
+      - ./Homework2:/usr/local/apache2/htdocs
+      
+  hw3:
+    build: 
+      context: ./Homework3
+    restart: unless-stopped
+    volumes:
+      - ./Homework3/static:/app/static
+      - ./Homework3/templates:/app/templates
+      - ./Homework3/src:/app/src
+      - ./Homework3/server.js:/app/server.js

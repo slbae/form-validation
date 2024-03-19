@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Pay Your Friends</title>
+</head>
+
+<body>
+    <form id="paymentForm" action="/send" method="post" enctype="multipart/form-data">
+        <div class="grid-container">
+            <!-- Sender Details -->
+            <div class="sender">
+                <section>
+                    <h2>Sender Details</h2>
+                    <label for="senderFirstName">First Name: <span>*</span></label>
+                    <input type="text" id="senderFirstName" name="senderFirstName" required /><br>
+                    <label for="senderLastName">Last Name: <span>*</span></label>
+                    <input type="text" id="senderLastName" name="senderLastName" required /><br>
+                    <label for="fileInput">Preview Image <span>*</span></label>
+                    <input type="file" name="fileInput" id="fileInput" accept="image/*" onchange="previewImage(event)"
+                        required />
+                    <br>
+                    <img id="preview" />
+                </section>
+            </div>
+            <!-- Recipient Details -->
+            <div class="recipient">
+                <section>
+                    <h2>Recipient Details</h2>
+                    <label for="recipientFirstName">First Name: <span>*</span></label>
+                    <input type="text" id="recipientFirstName" name="recipientFirstName" required /><br>
+                    <label for="recipientLastName">Last Name: <span>*</span></label>
+                    <input type="text" id="recipientLastName" name="recipientLastName" required /><br>
+                    <div class="msgcontainer">
+                        <label for="message">Message <span>*</span></label>
+                        <textarea id="message" name="message" minlength="10" required></textarea>
+                    </div>
+
+                    <label>Notify Recipient:<span>*</span><br>
+                        <input type="radio" name="notify" value="email" id="notifyEmail" required /> Email
+                        <input type="radio" name="notify" value="sms" id="notifySMS" required /> SMS
+                        <input type="radio" name="notify" value="do_not_notify" required /> Do not notify
+                    </label><br>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" />
+                    <label class="required" id="emailLabel"></label><br>
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        placeholder="XXX-XXXX-XXXX" />
+                    <label class="required" id="phoneLabel"></label>
+                </section>
+            </div>
+            <!-- Payment Details -->
+            <div class="payment">
+                <section>
+                    <h2>Payment Details</h2>
+                    <div>
+                        <label for="cardType">Card Type: <span>*</span></label>
+                        <select id="cardType" name="cardType" required>
+                            <option value="" disabled selected hidden>Choose Card Type</option>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">Mastercard</option>
+                            <option value="amex">American Express</option>
+                            <option value="discover">Discover</option>
+                        </select><br>
+                        <label for="cardNumber">Card Number: <span>*</span></label>
+                        <input type="text" id='cardNumber' placeholder="XXXX-XXXX-XXXX-XXXX"
+                            pattern="\d{4}-\d{4}-\d{4}-\d{4}" name="cardNumber" required />
+                    </div>
+                    <div>
+                        <label for="expiration">Expiration: <span>*</span></label>
+                        <input type="text" id="expiration" name="expiration" pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                            placeholder="MM/YY" required />
+                        <div id="expirationError"></div>
+                        <label for="ccv">CCV: <span>*</span></label>
+                        <input type="password" id='ccv' maxlength="4" name="ccv" required /><br>
+                        <label for="amount">Amount ($): <span>*</span></label>
+                        <input type="text" id='amount' name="amount" required />
+                    </div>
+                    <input type="checkbox" id='terms' name="terms" required />
+                    <label for="terms">I agree to the Terms and Conditions <span>*</span></label><br>
+                    <br>
+                    <input id="submit-btn" type="submit" value="Send" />
+                </section>
+            </div>
+        </div>
+    </form>
+</body>
+<script src="../js/index.js"></script>
+</html>

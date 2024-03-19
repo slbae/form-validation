@@ -1,0 +1,82 @@
+#preview {
+    max-width: 200px;
+    height: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: beige;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sender,
+.recipient,
+.payment {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #d5a1df;
+    gap: 10px;
+    padding: 20px;
+    font-size: 100%;
+}
+
+.sender {
+    grid-row: 1;
+    grid-column: 1;
+    align-items: center;
+}
+
+.recipient {
+    grid-row: 1;
+    align-items: center;
+}
+
+.payment {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    align-items: center;
+}
+
+.msgcontainer textarea {
+    height: 40px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.sender label,
+.recipient label,
+.payment label {
+    margin-bottom: 20px;
+}
+
+.sender input,
+.recipient input,
+.payment input,
+.sender select,
+.payment select {
+    margin-bottom: 10px;
+}
+
+.msgcontainer {
+    margin-bottom: 10px;
+}
+
+span {
+    color: red;
+    margin-left: 3px;
+    /* Adjust the margin as needed */
+}
+
+#expirationError {
+    color: red;
+}
